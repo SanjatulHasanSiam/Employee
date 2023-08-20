@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjaxModal", "AjaxModal\AjaxModal.csproj", "{04D106DA-6721-4494-BECB-50733B8BF13B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "RestApi\RestApi.csproj", "{0A583B41-DDFB-44DA-9CA5-B0908725FB89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04D106DA-6721-4494-BECB-50733B8BF13B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04D106DA-6721-4494-BECB-50733B8BF13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04D106DA-6721-4494-BECB-50733B8BF13B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04D106DA-6721-4494-BECB-50733B8BF13B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A583B41-DDFB-44DA-9CA5-B0908725FB89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A583B41-DDFB-44DA-9CA5-B0908725FB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A583B41-DDFB-44DA-9CA5-B0908725FB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A583B41-DDFB-44DA-9CA5-B0908725FB89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03391A1A-72E1-4F8F-867F-3F81A7714BBD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,240 @@
+﻿<h1>Designation Management</h1>
+<button class="btn btn-primary" onclick="openAddModal()">Add Designation</button>
+<table id="designation_table" class="display">
+    <thead>
+    <tr>
+                    @*<th>ID</th>*@
+                    <th>Title</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+    </thead>
+    <tbody>
+        <!-- Data rows will be added dynamically -->
+    </tbody>
+</table>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Add Designation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="designation_titile_add">Designation Title</label>
+                    <input type="text" class="form-control" id="designation_titile_add" placeholder="Designation Title">
+                </div>
+                <div class="form-group">
+                    <label for="designation_salary_add">Designation Salary</label>
+                    <input type="number" class="form-control" id="designation_salary_add" placeholder="Designation Salary">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="add_designation_modal">Add Designation</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update Designation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="designation_id_update">
+                <div class="form-group">
+                    <label for="designation_title_update">Designation Title</label>
+                    <input type="text" class="form-control" id="designation_title_update" placeholder="Designation Title">
+                </div>
+                <div class="form-group">
+                    <label for="designation_salary_update">Designation Salary</label>
+                    <input type="number" class="form-control" id="designation_salary_update" placeholder="Designation Salary">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="updateDesignationButton">Update Designation</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this designation?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    var dataTable;
+        var apiBase = "https://localhost:7180/api/v1"
+
+    function fetchDesignations() {
+        fetch(`${apiBase}/designations`)
+            .then(response => response.json())
+            .then(data => {
+                dataTable.clear().rows.add(data).draw(false);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function deleteDesignation(id) {
+        // Show confirmation modal before deleting
+        $('#confirmDeleteModal').modal('show');
+        
+        $('#confirmDeleteButton').off('click').on('click', function() {
+            $('#confirmDeleteModal').modal('hide');
+            fetch(`${apiBase}/designations/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    dataTable.row(`[data-id="${id}"]`).remove().draw(true);
+                } else {
+                    console.error('Error deleting designation.');
+                }
+            })
+            .catch(error => console.error('Error deleting designation:', error));
+        });
+    }
+
+    function updateDesignation(id, updatedDesignation) {
+        fetch(`${apiBase}/designations/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedDesignation)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Parse the response to get the updated designation
+            } else {
+                console.error('Error updating designation.');
+                throw new Error('Error updating designation.');
+            }
+        })
+        .then(updatedDesignation => {
+            $('#updateModal').modal('hide');
+
+            // Find the row with the updated designation's ID and update its data
+            const updatedRow = dataTable.row(`[data-id="${id}"]`);
+            updatedRow.data(updatedDesignation);
+        })
+        .catch(error => console.error('Error updating designation:', error));
+    }
+
+    function openUpdateModal(id, title, salary) {
+        $('#designation_id_update').val(id);
+        $('#designation_title_update').val(title);
+        $('#designation_salary_update').val(salary);
+
+        $('#updateDesignationButton').off('click').on('click', function () {
+            const updatedId = $('#designation_id_update').val();
+            const updatedTitle = $('#designation_title_update').val();
+            const updatedSalary = parseFloat($('#designation_salary_update').val());
+
+            const updatedDesignation = { "title": updatedTitle, "salary": updatedSalary };
+
+            updateDesignation(updatedId, updatedDesignation);
+        });
+
+        $('#updateModal').modal('show');
+    }
+
+    function openAddModal() {
+        // Clear input fields
+        $('#designation_titile_add').val('');
+        $('#designation_salary_add').val('');
+    
+        // Show the add modal
+        $('#addModal').modal('show');
+    }
+
+
+    function addDesignation(designation) {
+        fetch(`${apiBase}/designations`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(designation)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Parse the response to get the added designation with its Id
+            } else {
+                console.error('Error adding designation.');
+                throw new Error('Error adding designation.');
+            }
+        })
+        .then(addedDesignation => {
+            $('#addModal').modal('hide');
+
+            // Assuming dataTable is a reference to the DataTable object
+            dataTable.row.add(addedDesignation).draw(false);
+        })
+        .catch(error => console.error('Error adding designation:', error));
+    }
+
+    $(document).ready(function() {
+        dataTable = $('#designation_table').DataTable({
+            "columns": [
+                //{ "data": "id" },
+                    { "data": "title" },
+                    { "data": "salary" },
+                {
+                    "data": "id",
+                    "render": function(data, type, row) {
+                        return `
+                            <button class="btn btn-danger btn-delete" onclick="deleteDesignation(${data})">Delete</button>
+                            <button class="btn btn-primary btn-update" onclick="openUpdateModal(${data},'${row.title}',${row.salary})">Update</button>
+                        `;
+                    },
+                    "orderable": false
+                }
+            ],
+            "createdRow": function (row, data, dataIndex) {
+                $(row).attr('data-id', data.id);
+            }
+        });
+
+        fetchDesignations();
+        
+        $('#add_designation_modal').on('click', function() {
+            var designationTitle = $('#designation_titile_add').val();
+            var designationsalary = parseFloat($('#designation_salary_add').val());
+            var newDesignation = { "title": designationTitle, "salary": designationsalary };
+            addDesignation(newDesignation);
+        });
+    });
+</script>
+}

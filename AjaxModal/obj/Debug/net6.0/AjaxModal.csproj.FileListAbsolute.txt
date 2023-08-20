@@ -1,0 +1,87 @@
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/appsettings.Development.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/appsettings.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/AjaxModal.staticwebassets.runtime.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/AjaxModal
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/AjaxModal.deps.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/AjaxModal.runtimeconfig.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/AjaxModal.dll
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/bin/Debug/net6.0/AjaxModal.pdb
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.csproj.AssemblyReference.cache
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.GeneratedMSBuildEditorConfig.editorconfig
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.AssemblyInfoInputs.cache
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.AssemblyInfo.cs
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.csproj.CoreCompileInputs.cache
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.MvcApplicationPartsAssemblyInfo.cache
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.RazorAssemblyInfo.cache
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.RazorAssemblyInfo.cs
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/staticwebassets.build.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/staticwebassets.development.json
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/scopedcss/bundle/AjaxModal.styles.css
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/scopedcss/projectbundle/AjaxModal.bundle.scp.css
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.dll
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/refint/AjaxModal.dll
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.pdb
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/AjaxModal.genruntimeconfig.cache
+/Users/abdulsalam/My Projects/AjaxModal/AjaxModal/obj/Debug/net6.0/ref/AjaxModal.dll
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\appsettings.Development.json
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\appsettings.json
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.staticwebassets.runtime.json
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.exe
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.deps.json
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.runtimeconfig.json
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.dll
+D:\Repo\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.pdb
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.AssemblyInfoInputs.cache
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.AssemblyInfo.cs
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.csproj.CoreCompileInputs.cache
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.MvcApplicationPartsAssemblyInfo.cache
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.RazorAssemblyInfo.cache
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.RazorAssemblyInfo.cs
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.AjaxModal.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.build.AjaxModal.props
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.AjaxModal.props
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.AjaxModal.props
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets.pack.json
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets.build.json
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets.development.json
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\scopedcss\bundle\AjaxModal.styles.css
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\scopedcss\projectbundle\AjaxModal.bundle.scp.css
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.dll
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\refint\AjaxModal.dll
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.pdb
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.genruntimeconfig.cache
+D:\Repo\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\ref\AjaxModal.dll
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\appsettings.Development.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\appsettings.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.staticwebassets.runtime.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.exe
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.deps.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.runtimeconfig.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.dll
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\bin\Debug\net6.0\AjaxModal.pdb
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.csproj.AssemblyReference.cache
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.GeneratedMSBuildEditorConfig.editorconfig
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.AssemblyInfoInputs.cache
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.AssemblyInfo.cs
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.csproj.CoreCompileInputs.cache
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.MvcApplicationPartsAssemblyInfo.cache
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.RazorAssemblyInfo.cache
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.RazorAssemblyInfo.cs
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.AjaxModal.Microsoft.AspNetCore.StaticWebAssets.props
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.build.AjaxModal.props
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.AjaxModal.props
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.AjaxModal.props
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets.pack.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets.build.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\staticwebassets.development.json
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\scopedcss\bundle\AjaxModal.styles.css
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\scopedcss\projectbundle\AjaxModal.bundle.scp.css
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.dll
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\refint\AjaxModal.dll
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.pdb
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\AjaxModal.genruntimeconfig.cache
+F:\SSL-DotNet\AjaxModalValidation\AjaxModal\obj\Debug\net6.0\ref\AjaxModal.dll
