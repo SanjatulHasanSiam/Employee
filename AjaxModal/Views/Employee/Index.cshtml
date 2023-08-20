@@ -1,4 +1,6 @@
-﻿<h1>Employee Management</h1>
+﻿@model AjaxModal.ViewModels.EmployeeViewModel
+
+<h1>Employee Management</h1>
 <button class="btn btn-primary" onclick="openAddModal()">Add Employee</button>
 <table id="employee_table" class="display">
     <thead>
@@ -37,7 +39,12 @@
                 <!-- Change here -->
                 <div class="form-group">
                     <label for="employee_designation_add">Employee Designation</label>
-                    <input type="number" class="form-control" id="employee_designation_add" placeholder="Employee Designation">
+                    <select id="fruitSelect">
+                        @foreach(var designation in Model.Designations){
+                            <option value="@designation.Id">@designation.Title</option>
+                        }
+                       
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
@@ -163,10 +170,11 @@
                 .catch(error => console.error('Error updating employee:', error));
         }
 
-        function openUpdateModal(id, title, salary) {
+        function openUpdateModal(id, name, email,designationId) {
             $('#employee_id_update').val(id);
-            $('#employee_name_update').val(title);
-            $('#employee_email_update').val(salary);
+            $('#employee_name_update').val(name);
+            $('#employee_email_update').val(email);
+            $('#employee_designation_update').parseFloat(val(designationId));
 
             $('#updateEmployeeButton').off('click').on('click', function () {
                 const updatedId = $('#employee_id_update').val();
@@ -228,7 +236,7 @@
                         "render": function (data, type, row) {
                             return `
                                     <button class="btn btn-danger btn-delete" onclick="deleteEmployee(${data})">Delete</button>
-                                    <button class="btn btn-primary btn-update" onclick="openUpdateModal(${data},'${row.title}',${row.salary})">Update</button>
+                                    <button class="btn btn-primary btn-update" onclick="openUpdateModal(${data},'${row.name}',${row.email})">Update</button>
                                 `;
                         },
                         "orderable": false
@@ -244,8 +252,9 @@
             $('#add_employee_modal').on('click', function () {
                 var employeeName = $('#employee_name_add').val();
                 var employeeEmail = $('#employee_email_add').val();
-                var employeeDesignation = $('#employee_designation_add').val();
-                var newEmployee = { "name": employeeTitle, "email": employeesalary, "designationId": employeeDesignation };
+                //var employeeDesignation = $('#employee_designation_add').val();
+                var employeeDesignation=1;
+                var newEmployee = { "name": employeeName, "email": employeeEmail, "designationId": employeeDesignation };
                 addEmployee(newEmployee);
             });
         });

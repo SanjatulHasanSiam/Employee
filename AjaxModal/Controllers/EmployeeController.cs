@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AjaxModal.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AjaxModal.Controllers
 {
@@ -6,7 +7,16 @@ namespace AjaxModal.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var vm = new EmployeeViewModel()
+            {
+                Designations = new List<DesignationViewModel>
+                {
+                    new(){Id = 1,Title="ABC"},
+                    new(){Id = 2,Title="BCF"},
+
+                }
+            };
+            return View(vm);
         }
     }
 }

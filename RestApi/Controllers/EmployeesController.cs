@@ -32,7 +32,7 @@ namespace RestApi.Controllers
 
         // POST: api/v1/Employee
         [HttpPost]
-        public IActionResult PostEmployee(Employee employee)
+        public IActionResult PostEmployee([Bind("Id,Name,DesignationId")] Employee employee)
         {
             if (!ModelState.IsValid)
             {
