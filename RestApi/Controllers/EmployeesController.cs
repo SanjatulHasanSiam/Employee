@@ -1,6 +1,5 @@
-﻿using AjaxModal.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using RestApi.DataAccess;
 using RestApi.Models;
 
 namespace RestApi.Controllers
@@ -9,12 +8,17 @@ namespace RestApi.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private static readonly List<Employee> Employees = new List<Employee>();
-
+       // private static readonly List<Employee> Employees = new List<Employee>();
+        private readonly ApplicationDbContext _context;
+        public EmployeesController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: api/v1/Employee
         [HttpGet]
         public IEnumerable<Employee> GetEmployees()
         {
+            List<Employee> Employees = _context.Employees.ToList();
             return Employees;
         }
 
@@ -22,7 +26,8 @@ namespace RestApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetEmployee(int id)
         {
-            var employee = Employees.FirstOrDefault(p => p.Id == id);
+            
+            var employee = _context.Employees.FirstOrDefault(p => p.Id == id);
             if (employee == null)
             {
                 return NotFound();
@@ -34,11 +39,12 @@ namespace RestApi.Controllers
         [HttpPost]
         public IActionResult PostEmployee([Bind("Id,Name,DesignationId")] Employee employee)
         {
+          
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            List<Employee> Employees = _context.Employees.ToList();
             // Generate a unique ID for the new Employee
             int nextId = 1;
             if (Employees.Any())
@@ -47,7 +53,8 @@ namespace RestApi.Controllers
             }
 
             employee.Id = nextId;
-            Employees.Add(employee);
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
 
             return CreatedAtAction(nameof(GetEmployee), new { id = employee.Id }, employee);
         }
@@ -61,7 +68,7 @@ namespace RestApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var existingEmployee = Employees.FirstOrDefault(p => p.Id == id);
+            var existingEmployee = _context.Employees.FirstOrDefault(p => p.Id == id);
             if (existingEmployee == null)
             {
                 return NotFound();
@@ -70,7 +77,8 @@ namespace RestApi.Controllers
             existingEmployee.Name = employee.Name;
             existingEmployee.Email = employee.Email;
             employee.DesignationId = employee.DesignationId;
-
+            _context.Employees.Update(existingEmployee);
+            _context.SaveChanges();
             return Ok(existingEmployee);
         }
 
@@ -78,13 +86,14 @@ namespace RestApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteEmployee(int id)
         {
-            var employee = Employees.FirstOrDefault(p => p.Id == id);
+            var employee = _context.Employees.FirstOrDefault(p => p.Id == id);
             if (employee == null)
             {
                 return NotFound();
             }
 
-            Employees.Remove(employee);
+            _context.Employees.Remove(employee);
+            _context.SaveChanges();
             return Ok(employee);
         }
     }

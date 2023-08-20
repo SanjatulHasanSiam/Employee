@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using RestApi.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,11 +15,22 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAnyCors", builder =>
     {
         builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
+        .AllowAnyMethod()
+        .AllowAnyHeader();
     });
 });
 
+var Configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile($"appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")
+    , ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")),
+    options => options.EnableRetryOnFailure(
+maxRetryCount: 5,
+maxRetryDelay: System.TimeSpan.FromSeconds(30),
+errorNumbersToAdd: null)
+));
 var app = builder.Build();
 
 app.UseCors("AllowAnyCors");

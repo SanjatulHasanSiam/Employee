@@ -1,22 +1,35 @@
 ﻿using AjaxModal.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 
 namespace AjaxModal.Controllers
 {
     public class EmployeeController : Controller
     {
-        public IActionResult Index()
-        {
-            var vm = new EmployeeViewModel()
-            {
-                Designations = new List<DesignationViewModel>
-                {
-                    new(){Id = 1,Title="ABC"},
-                    new(){Id = 2,Title="BCF"},
+        private readonly HttpClient _httpClient;
 
-                }
-            };
-            return View(vm);
+        public EmployeeController()
+        {
+            _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri("https://localhost:7180/api/v1/"); // Replace with the API's base URL
         }
+        public async Task<IActionResult> Index()
+        {
+
+            HttpResponseMessage response = await _httpClient.GetAsync("designations"); // Replace with the actual API endpoint
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var responseData = await response.Content.ReadFromJsonAsync<List<DesignationViewModel>>();
+                // Process responseData...
+                var vm = new EmployeeViewModel()
+                {
+                    Designations = responseData!
+                };
+                return View(vm);
+            }
+            return View(null);
+        }
+
     }
 }

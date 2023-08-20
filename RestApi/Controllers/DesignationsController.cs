@@ -1,5 +1,6 @@
 ﻿using AjaxModal.Models;
 using Microsoft.AspNetCore.Mvc;
+using RestApi.DataAccess;
 
 namespace RestApi.Controllers
 {
@@ -7,20 +8,35 @@ namespace RestApi.Controllers
     [Route("api/v1/[controller]")]
     public class DesignationsController : ControllerBase
     {
-        private static readonly List<Designation> Designations = new List<Designation>();
-
+       // private static readonly List<Designation> Designations = new List<Designation>();
+        private readonly ApplicationDbContext _context;
+        public DesignationsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: api/v1/Designation
         [HttpGet]
         public IEnumerable<Designation> GetDesignations()
         {
-            return Designations;
+            try
+            {
+                List<Designation> Designations = _context.Designations.ToList();
+                return Designations;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            
+            
         }
 
         // GET: api/v1/Designation/5
         [HttpGet("{id}")]
         public IActionResult GetDesignation(int id)
         {
-            var designation = Designations.FirstOrDefault(p => p.Id == id);
+
+            var designation = _context.Designations.FirstOrDefault(p => p.Id == id);
             if (designation == null)
             {
                 return NotFound();
@@ -39,13 +55,15 @@ namespace RestApi.Controllers
 
             // Generate a unique ID for the new Designation
             int nextId = 1;
+            List<Designation> Designations = _context.Designations.ToList();
             if (Designations.Any())
             {
                 nextId = Designations.Max(p => p.Id) + 1;
             }
 
             designation.Id = nextId;
-            Designations.Add(designation);
+            _context.Designations.Add(designation);
+            _context.SaveChanges();
 
             return CreatedAtAction(nameof(GetDesignation), new { id = designation.Id }, designation);
         }
@@ -59,7 +77,7 @@ namespace RestApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var existingDesignation = Designations.FirstOrDefault(p => p.Id == id);
+            var existingDesignation = _context.Designations.FirstOrDefault(p => p.Id == id);
             if (existingDesignation == null)
             {
                 return NotFound();
@@ -67,7 +85,8 @@ namespace RestApi.Controllers
 
             existingDesignation.Title = designation.Title;
             existingDesignation.Salary = designation.Salary;
-
+            _context.Designations.Update(existingDesignation);
+            _context.SaveChanges();
             return Ok(existingDesignation);
         }
 
@@ -75,13 +94,14 @@ namespace RestApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteDesignation(int id)
         {
-            var designation = Designations.FirstOrDefault(p => p.Id == id);
+            var designation = _context.Designations.FirstOrDefault(p => p.Id == id);
             if (designation == null)
             {
                 return NotFound();
             }
 
-            Designations.Remove(designation);
+            _context.Designations.Remove(designation);
+            _context.SaveChanges();
             return Ok(designation);
         }
     }

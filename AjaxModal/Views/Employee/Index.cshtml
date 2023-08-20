@@ -33,7 +33,7 @@
                     <input type="text" class="form-control" id="employee_name_add" placeholder="Employee Name">
                 </div>
                 <div class="form-group">
-                    <label for="employee_email_add">Employee Salary</label>
+                    <label for="employee_email_add">Employee Email</label>
                     <input type="email" class="form-control" id="employee_email_add" placeholder="Employee Email">
                 </div>
                 <!-- Change here -->
@@ -229,8 +229,9 @@
             dataTable = $('#employee_table').DataTable({
                 "columns": [
                     //{ "data": "id" },
-                    { "data": "title" },
-                    { "data": "salary" },
+                    { "data": "name" },
+                    { "data": "email" },
+                    { "data": "designation.title" },
                     {
                         "data": "id",
                         "render": function (data, type, row) {
