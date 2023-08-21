@@ -25,6 +25,7 @@ namespace RestApi.DataAccess
                .Build();
                 var config = configuration.GetConnectionString("DefaultConnection");
                 optionsBuilder.UseMySql(config ?? string.Empty, ServerVersion.AutoDetect(config));
+               
             }
         }
     }

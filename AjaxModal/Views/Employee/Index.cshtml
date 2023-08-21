@@ -69,16 +69,17 @@
                 <input type="hidden" id="employee_id_update">
                 <div class="form-group">
                     <label for="employee_name_update">Employee Name</label>
-                    <input type="text" class="form-control" id="employee_name_add" placeholder="Employee Name">
+                    <input type="text" class="form-control" id="employee_name_update" placeholder="Employee Name">
                 </div>
                 <div class="form-group">
                     <label for="employee_email_update">Employee Email</label>
-                    <input type="number" class="form-control" id="employee_email_update" placeholder="Employee Email">
+                    <input type="email" class="form-control" id="employee_email_update" placeholder="Employee Email">
                 </div>
                 <!-- Change here -->
                 <div class="form-group">
-                    <label for="employee_designation_add">Employee Designation</label>
-                    <input type="number" class="form-control" id="employee_designation_add" placeholder="Employee Designation">
+                    <label for="employee_designation_update">Employee Designation</label>
+                    <select id="employee_designation_update">
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
@@ -119,6 +120,7 @@
             fetch(`${apiBase}/employees`)
                 .then(response => response.json())
                 .then(data => {
+                   
                     dataTable.clear().rows.add(data).draw(false);
                 })
                 .catch(error => console.error('Error fetching data:', error));
@@ -174,14 +176,27 @@
             $('#employee_id_update').val(id);
             $('#employee_name_update').val(name);
             $('#employee_email_update').val(email);
-            $('#employee_designation_update').parseFloat(val(designationId));
+            var designations = @Html.Raw(Json.Serialize(Model.Designations));
 
+            var designations = @Html.Raw(Json.Serialize(Model.Designations));
+            var designationDropdown = $('#employee_designation_update');
+
+            designationDropdown.empty(); // Clear existing options
+
+            $.each(designations, function (index, designation) {
+                designationDropdown.append($('<option>', {
+                    value: designation.Id,
+                    text: designation.Title,
+                    selected: designation.Id === designationId // Set selected attribute
+                }));
+            });
             $('#updateEmployeeButton').off('click').on('click', function () {
                 const updatedId = $('#employee_id_update').val();
-                const updatedTitle = $('#employee_name_update').val();
-                const updatedSalary = parseFloat($('#employee_email_update').val());
+                const updatedName = $('#employee_name_update').val();
+                const updatedEmail = $('#employee_email_update').val();
+                const updatedDesignationId = parseFloat($('#employee_designation_update').val());
 
-                const updatedEmployee = { "title": updatedTitle, "salary": updatedSalary };
+                const updatedEmployee = { "name": updatedName, "email": updatedEmail, "designationId": updatedDesignationId };
 
                 updateEmployee(updatedId, updatedEmployee);
             });
@@ -237,7 +252,7 @@
                         "render": function (data, type, row) {
                             return `
                                     <button class="btn btn-danger btn-delete" onclick="deleteEmployee(${data})">Delete</button>
-                                    <button class="btn btn-primary btn-update" onclick="openUpdateModal(${data},'${row.name}',${row.email})">Update</button>
+                                            <button class="btn btn-primary btn-update" onclick="openUpdateModal(${data},'${row.name}','${row.email}',${row.designation.id})">Update</button>
                                 `;
                         },
                         "orderable": false

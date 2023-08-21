@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RestApi.DataAccess;
 using RestApi.Models;
 
@@ -18,7 +19,8 @@ namespace RestApi.Controllers
         [HttpGet]
         public IEnumerable<Employee> GetEmployees()
         {
-            List<Employee> Employees = _context.Employees.ToList();
+            List<Employee> Employees = _context.Employees.Include(u=>u.Designation).ToList();
+           
             return Employees;
         }
 
