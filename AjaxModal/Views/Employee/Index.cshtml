@@ -39,7 +39,7 @@
                 <!-- Change here -->
                 <div class="form-group">
                     <label for="employee_designation_add">Employee Designation</label>
-                    <select id="fruitSelect">
+                    <select id="employee_designation_add">
                         @foreach(var designation in Model.Designations){
                             <option value="@designation.Id">@designation.Title</option>
                         }
@@ -65,6 +65,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
                 <input type="hidden" id="employee_id_update">
                 <div class="form-group">
@@ -176,26 +177,26 @@
             $('#employee_id_update').val(id);
             $('#employee_name_update').val(name);
             $('#employee_email_update').val(email);
-            var designations = @Html.Raw(Json.Serialize(Model.Designations));
 
             var designations = @Html.Raw(Json.Serialize(Model.Designations));
+            debugger;
             var designationDropdown = $('#employee_designation_update');
 
             designationDropdown.empty(); // Clear existing options
 
             $.each(designations, function (index, designation) {
                 designationDropdown.append($('<option>', {
-                    value: designation.Id,
-                    text: designation.Title,
-                    selected: designation.Id === designationId // Set selected attribute
+                    value: designation.id,
+                    text: designation.title,
+                    selected: designation.id === designationId // Set selected attribute
                 }));
             });
             $('#updateEmployeeButton').off('click').on('click', function () {
                 const updatedId = $('#employee_id_update').val();
                 const updatedName = $('#employee_name_update').val();
                 const updatedEmail = $('#employee_email_update').val();
-                const updatedDesignationId = parseFloat($('#employee_designation_update').val());
-
+                const updatedDesignationId = $('#employee_designation_update').val();
+                debugger;
                 const updatedEmployee = { "name": updatedName, "email": updatedEmail, "designationId": updatedDesignationId };
 
                 updateEmployee(updatedId, updatedEmployee);
@@ -233,9 +234,9 @@
                 })
                 .then(addedEmployee => {
                     $('#addModal').modal('hide');
-
                     // Assuming dataTable is a reference to the DataTable object
                     dataTable.row.add(addedEmployee).draw(false);
+                    debugger;
                 })
                 .catch(error => console.error('Error adding employee:', error));
         }
@@ -268,8 +269,7 @@
             $('#add_employee_modal').on('click', function () {
                 var employeeName = $('#employee_name_add').val();
                 var employeeEmail = $('#employee_email_add').val();
-                //var employeeDesignation = $('#employee_designation_add').val();
-                var employeeDesignation=1;
+                var employeeDesignation = $('#employee_designation_add').val();
                 var newEmployee = { "name": employeeName, "email": employeeEmail, "designationId": employeeDesignation };
                 addEmployee(newEmployee);
             });
