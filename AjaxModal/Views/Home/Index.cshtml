@@ -69,6 +69,33 @@
     </div>
 </div>
 
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Designation Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="designation_id_details">
+                <div class="form-group">
+                    <label for="designation_title_details">Designation Title</label>
+                    <input disabled type="text" class="form-control" id="designation_title_details">
+                </div>
+                <div class="form-group">
+                    <label for="designation_salary_details">Designation Salary</label>
+                    <input disabled type="number" class="form-control" id="designation_salary_details">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Confirm Delete Modal -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -166,6 +193,14 @@
         $('#updateModal').modal('show');
     }
 
+
+        function openDetailsModal(id, title, salary) {
+            $('#designation_id_details').val(id);
+            $('#designation_title_details').val(title);
+            $('#designation_salary_details').val(salary);
+            $('#detailsModal').modal('show');
+        }
+
     function openAddModal() {
         // Clear input fields
         $('#designation_titile_add').val('');
@@ -213,6 +248,7 @@
                         return `
                             <button class="btn btn-danger btn-delete" onclick="deleteDesignation(${data})">Delete</button>
                             <button class="btn btn-primary btn-update" onclick="openUpdateModal(${data},'${row.title}',${row.salary})">Update</button>
+                            <button class="btn btn-primary btn-success" onclick="openDetailsModal(${data},'${row.title}',${row.salary})">Details</button>
                         `;
                     },
                     "orderable": false
