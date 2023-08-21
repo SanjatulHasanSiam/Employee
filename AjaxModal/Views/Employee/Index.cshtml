@@ -210,7 +210,9 @@
             // Clear input fields
             $('#employee_name_add').val('');
             $('#employee_email_add').val('');
-            $('#employee_designation_add').val('');
+            var firstDesignationId = @Model.Designations.FirstOrDefault()?.Id;
+            $('#employee_designation_add').val(firstDesignationId);
+           
 
             // Show the add modal
             $('#addModal').modal('show');
@@ -271,7 +273,7 @@
                 var employeeName = $('#employee_name_add').val();
                 var employeeEmail = $('#employee_email_add').val();
                 var employeeDesignationId = $('#employee_designation_add').val();
-                var employeeDesignationTitle = $('#employee_designation_add').find('option:selected').text();
+                
                 var newEmployee = {
                     "name": employeeName, "email": employeeEmail, "designationId": employeeDesignationId
                 };
