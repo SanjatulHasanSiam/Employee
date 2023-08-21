@@ -167,8 +167,9 @@
                     $('#updateModal').modal('hide');
 
                     // Find the row with the updated employee's ID and update its data
-                    const updatedRow = dataTable.row(`[data-id="${id}"]`);
-                    updatedRow.data(updatedEmployee);
+                    //const updatedRow = dataTable.row(`[data-id="${id}"]`);
+                    //updatedRow.data(updatedEmployee);
+                    fetchEmployees()
                 })
                 .catch(error => console.error('Error updating employee:', error));
         }
@@ -235,8 +236,8 @@
                 .then(addedEmployee => {
                     $('#addModal').modal('hide');
                     // Assuming dataTable is a reference to the DataTable object
-                    dataTable.row.add(addedEmployee).draw(false);
-                    debugger;
+                    //dataTable.row.add(addedEmployee).draw(false);
+                    fetchEmployees()
                 })
                 .catch(error => console.error('Error adding employee:', error));
         }
@@ -269,8 +270,11 @@
             $('#add_employee_modal').on('click', function () {
                 var employeeName = $('#employee_name_add').val();
                 var employeeEmail = $('#employee_email_add').val();
-                var employeeDesignation = $('#employee_designation_add').val();
-                var newEmployee = { "name": employeeName, "email": employeeEmail, "designationId": employeeDesignation };
+                var employeeDesignationId = $('#employee_designation_add').val();
+                var employeeDesignationTitle = $('#employee_designation_add').find('option:selected').text();
+                var newEmployee = {
+                    "name": employeeName, "email": employeeEmail, "designationId": employeeDesignationId
+                };
                 addEmployee(newEmployee);
             });
         });
