@@ -37,15 +37,17 @@
                     <input type="email" class="form-control" id="employee_email_add" placeholder="Employee Email">
                 </div>
                 <!-- Change here -->
+
                 <div class="form-group">
                     <label for="employee_designation_add">Employee Designation</label>
-                    <select id="employee_designation_add">
-                        @foreach(var designation in Model.Designations){
-                            <option value="@designation.Id">@designation.Title</option>
+                    <select id="employee_designation_add" class="form-select">
+                        @foreach (var designation in Model.Designations)
+                        {
+                            <option class="" value="@designation.Id">@designation.Title</option>
                         }
-                       
                     </select>
                 </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -79,7 +81,7 @@
                 <!-- Change here -->
                 <div class="form-group">
                     <label for="employee_designation_update">Employee Designation</label>
-                    <select id="employee_designation_update">
+                    <select id="employee_designation_update" class="form-select">
                     </select>
                 </div>
             </div>
